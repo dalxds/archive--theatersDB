@@ -1886,7 +1886,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-var _sezonOptions = ['2019-2020', '2020-2021'];
+var _sezonOptions = ["2019-2020", "2020-2021"];
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "createparastasi",
   props: {
@@ -1932,7 +1932,7 @@ var _sezonOptions = ['2019-2020', '2020-2021'];
                 };
                 _context.prev = 3;
                 _context.next = 6;
-                return axios.post('/api/TheatrikiParagwgi/' + this.theatrikiparagwgi + '/Parastasi/store', data);
+                return axios.post("/api/TheatrikiParagwgi/" + this.theatrikiparagwgi + "/Parastasi/store", data);
 
               case 6:
                 _ref = _context.sent;
@@ -1965,13 +1965,13 @@ var _sezonOptions = ['2019-2020', '2020-2021'];
     theatraOptions: function theatraOptions() {
       var aithouses = this.$props.theatra.map(function (item) {
         return {
-          text: item['Όνομα'] + ' - ' + item['Όνομα_Αίθουσας'],
-          value: item['Θ_ID'] + '_' + item['Όνομα_Αίθουσας']
+          text: item["Όνομα"] + " - " + item["Όνομα_Αίθουσας"],
+          value: item["Θ_ID"] + "_" + item["Όνομα_Αίθουσας"]
         };
       });
       aithouses.splice(0, 0, {
         value: null,
-        text: 'Επιλέξτε θέατρο και αίθουσα',
+        text: "Επιλέξτε θέατρο και αίθουσα",
         disabled: true
       });
       return aithouses;
@@ -1986,7 +1986,7 @@ var _sezonOptions = ['2019-2020', '2020-2021'];
 
       sezon.splice(0, 0, {
         value: null,
-        text: 'Επιλέξτε σεζόν',
+        text: "Επιλέξτε σεζόν",
         disabled: true
       });
       return sezon;
@@ -1994,15 +1994,15 @@ var _sezonOptions = ['2019-2020', '2020-2021'];
   },
   watch: {
     theatroSelect: function theatroSelect() {
-      if (this.$data.theatroSelect == '') {
+      if (this.$data.theatroSelect == "") {
         this.$data.theatro = null;
         this.$data.aithousa = null;
         return;
       }
 
-      var parts = this.$data.theatroSelect.split('_');
+      var parts = this.$data.theatroSelect.split("_");
       this.$data.theatro = parseInt(parts[0]);
-      this.$data.aithousa = parts.slice(1).join('');
+      this.$data.aithousa = parts.slice(1).join("");
     }
   }
 });
@@ -2053,15 +2053,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'createtheatrikiparagwgi',
+  name: "createtheatrikiparagwgi",
   data: function data() {
     return {
       titlos: null,
@@ -2090,7 +2083,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 };
                 _context.prev = 3;
                 _context.next = 6;
-                return axios.post('/api/TheatrikiParagwgi/store', data);
+                return axios.post("/api/TheatrikiParagwgi/store", data);
 
               case 6:
                 _ref = _context.sent;
@@ -67553,98 +67546,111 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "b-form",
-    {
-      on: {
-        submit: function($event) {
-          $event.stopPropagation()
-          $event.preventDefault()
-          return _vm.submit($event)
-        }
-      }
-    },
+    "b-container",
     [
       _c(
-        "b-form-group",
-        { attrs: { "label-for": "theatroSelect" } },
-        [
-          _vm._v("\n        Θέατρο\n        "),
-          _c("b-form-select", {
-            attrs: { options: _vm.theatraOptions },
-            model: {
-              value: _vm.theatroSelect,
-              callback: function($$v) {
-                _vm.theatroSelect = $$v
-              },
-              expression: "theatroSelect"
+        "b-form",
+        {
+          on: {
+            submit: function($event) {
+              $event.stopPropagation()
+              $event.preventDefault()
+              return _vm.submit($event)
             }
-          })
+          }
+        },
+        [
+          _c(
+            "b-form-group",
+            { attrs: { "label-for": "theatroSelect" } },
+            [
+              _vm._v("\n      Θέατρο\n      "),
+              _c("b-form-select", {
+                attrs: { options: _vm.theatraOptions, size: "lg" },
+                model: {
+                  value: _vm.theatroSelect,
+                  callback: function($$v) {
+                    _vm.theatroSelect = $$v
+                  },
+                  expression: "theatroSelect"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            { attrs: { "label-for": "sezon" } },
+            [
+              _vm._v("\n      Σεζόν\n      "),
+              _c("b-form-select", {
+                attrs: { options: _vm.sezonOptions, size: "lg" },
+                model: {
+                  value: _vm.sezon,
+                  callback: function($$v) {
+                    _vm.sezon = $$v
+                  },
+                  expression: "sezon"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            { attrs: { "label-for": "enarxi" } },
+            [
+              _vm._v("\n      Ημερομηνία Έναρξης\n      "),
+              _c("b-form-input", {
+                attrs: { type: "datetime-local", size: "lg" },
+                model: {
+                  value: _vm.enarxi,
+                  callback: function($$v) {
+                    _vm.enarxi = $$v
+                  },
+                  expression: "enarxi"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            { attrs: { "label-for": "timi" } },
+            [
+              _vm._v("\n      Τιμή Ολόκληρου Εισιτηρίου (€)\n      "),
+              _c("b-form-input", {
+                attrs: { type: "number", size: "lg" },
+                model: {
+                  value: _vm.timi,
+                  callback: function($$v) {
+                    _vm.timi = $$v
+                  },
+                  expression: "timi"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("b-form-invalid-feedback", { attrs: { state: !_vm.errors } }, [
+            _vm._v("ERROR")
+          ]),
+          _vm._v(" "),
+          _c(
+            "b-button",
+            {
+              staticClass: "submit_btn",
+              attrs: { type: "submit", size: "lg" }
+            },
+            [_vm._v("Καταχώρηση")]
+          )
         ],
         1
-      ),
-      _vm._v(" "),
-      _c(
-        "b-form-group",
-        { attrs: { "label-for": "sezon" } },
-        [
-          _vm._v("\n        Σεζόν\n        "),
-          _c("b-form-select", {
-            attrs: { options: _vm.sezonOptions },
-            model: {
-              value: _vm.sezon,
-              callback: function($$v) {
-                _vm.sezon = $$v
-              },
-              expression: "sezon"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "b-form-group",
-        { attrs: { "label-for": "enarxi" } },
-        [
-          _vm._v("\n        Ημερομηνία Έναρξης\n        "),
-          _c("b-form-input", {
-            attrs: { type: "datetime-local" },
-            model: {
-              value: _vm.enarxi,
-              callback: function($$v) {
-                _vm.enarxi = $$v
-              },
-              expression: "enarxi"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "b-form-group",
-        { attrs: { "label-for": "timi" } },
-        [
-          _vm._v("\n        Τιμή Ολόκληρου Εισιτηρίου (€)\n        "),
-          _c("b-form-input", {
-            attrs: { type: "number" },
-            model: {
-              value: _vm.timi,
-              callback: function($$v) {
-                _vm.timi = $$v
-              },
-              expression: "timi"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("b-form-invalid-feedback", { attrs: { state: !_vm.errors } }, [
-        _vm._v("\n        ERRORS\n    ")
-      ]),
-      _vm._v(" "),
-      _c("b-button", { attrs: { type: "submit" } }, [_vm._v("Καταχώρηση")])
+      )
     ],
     1
   )
@@ -67672,81 +67678,99 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "b-form",
-    {
-      on: {
-        submit: function($event) {
-          $event.stopPropagation()
-          $event.preventDefault()
-          return _vm.submit($event)
-        }
-      }
-    },
+    "b-container",
     [
       _c(
-        "b-form-group",
-        { attrs: { "label-for": "titlos" } },
-        [
-          _vm._v("\n        Τίτλος\n        "),
-          _c("b-input", {
-            attrs: { type: "text" },
-            model: {
-              value: _vm.titlos,
-              callback: function($$v) {
-                _vm.titlos = $$v
-              },
-              expression: "titlos"
+        "b-form",
+        {
+          on: {
+            submit: function($event) {
+              $event.stopPropagation()
+              $event.preventDefault()
+              return _vm.submit($event)
             }
-          })
+          }
+        },
+        [
+          _c(
+            "b-form-group",
+            { attrs: { "label-for": "titlos" } },
+            [
+              _vm._v("\n      Τίτλος\n      "),
+              _c("b-input", {
+                attrs: { type: "text", size: "lg" },
+                model: {
+                  value: _vm.titlos,
+                  callback: function($$v) {
+                    _vm.titlos = $$v
+                  },
+                  expression: "titlos"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            { attrs: { "label-for": "perigrafi" } },
+            [
+              _vm._v("\n      Περιγραφή\n      "),
+              _c("b-input", {
+                attrs: { type: "text", size: "lg" },
+                model: {
+                  value: _vm.perigrafi,
+                  callback: function($$v) {
+                    _vm.perigrafi = $$v
+                  },
+                  expression: "perigrafi"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            { attrs: { "label-for": "diarkeia" } },
+            [
+              _vm._v("\n      Διάρκεια\n      "),
+              _c("b-input", {
+                attrs: { type: "number", size: "lg" },
+                model: {
+                  value: _vm.diarkeia,
+                  callback: function($$v) {
+                    _vm.diarkeia = $$v
+                  },
+                  expression: "diarkeia"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-invalid-feedback",
+            { attrs: { state: !_vm.errors } },
+            [
+              _c("b-alert", { attrs: { show: "", variant: "danger" } }, [
+                _vm._v("ERROR")
+              ])
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-button",
+            {
+              staticClass: "submit_btn",
+              attrs: { type: "submit", variant: "primary", size: "lg" }
+            },
+            [_vm._v("Δημιουργία")]
+          )
         ],
         1
-      ),
-      _vm._v(" "),
-      _c(
-        "b-form-group",
-        { attrs: { "label-for": "perigrafi" } },
-        [
-          _vm._v("\n        Περιγραφή\n        "),
-          _c("b-input", {
-            attrs: { type: "text" },
-            model: {
-              value: _vm.perigrafi,
-              callback: function($$v) {
-                _vm.perigrafi = $$v
-              },
-              expression: "perigrafi"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "b-form-group",
-        { attrs: { "label-for": "diarkeia" } },
-        [
-          _vm._v("\n        Διάρκεια\n        "),
-          _c("b-input", {
-            attrs: { type: "number" },
-            model: {
-              value: _vm.diarkeia,
-              callback: function($$v) {
-                _vm.diarkeia = $$v
-              },
-              expression: "diarkeia"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("b-form-invalid-feedback", { attrs: { state: !_vm.errors } }, [
-        _vm._v("\n        ERRORS\n    ")
-      ]),
-      _vm._v(" "),
-      _c("b-button", { attrs: { type: "submit", variant: "primary" } }, [
-        _vm._v("Δημιουργία")
-      ])
+      )
     ],
     1
   )

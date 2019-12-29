@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class = "container">
     <h1>Θεατρική Παραγωγή "{{ $paragwgi->Τίτλος }}"</h1>
 
     <h2>Συντελεστές</h2>
@@ -31,6 +32,7 @@
     @empty($parastaseis)
         Δεν υπάρχουν Παραστάσεις
     @else
+        <!-- fix table responsiveness -->
         <table class="table table-striped">
             <thead>
                 <td>Θέατρο</td>
@@ -55,4 +57,5 @@
         <br/>
         <a href="{{ route('Parastasi.create', $paragwgi->ΘΠ_ID) }}">Δημιουργία Παράστασης</a>
     @endif
+</div>
 @endsection

@@ -1,0 +1,47 @@
+.create_icon {
+    margin-left: 2rem;
+}
+
+a {
+    color: #3755be;
+}
+
+a:hover {
+    color: #263a83;
+    text-decoration: none;
+}
+
+.submit_btn {
+    background-color: #ff8e88;
+    border-color: #ff8e88;
+    color: #212529;
+    text-align: center;
+    width: 100%;
+}
+
+.submit_btn:hover,
+.submit_btn:active,
+.submit_btn:not(:disabled):not(.disabled).active,
+.submit_btn:not(:disabled):not(.disabled):active,
+.show > .submit_btn.dropdown-toggle,
+.submit_btn:focus,
+.submit_btn.focus {
+    background-color: #ff6a62;
+    border-color: #ff5e55;
+    color: #fff;
+}
+
+.card_style {
+    background-color: #ff8e88 !important;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.card_style a {
+    color: #fff;
+}
+
+.card_style a:hover {
+    color: #fff;
+    text-decoration: none;
+}
