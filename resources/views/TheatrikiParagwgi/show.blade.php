@@ -2,16 +2,17 @@
 
 @section('content')
 <div class = "container">
-    <h1>Θεατρική Παραγωγή "{{ $paragwgi->Τίτλος }}"</h1>
+    <h1> {{ $paragwgi->Τίτλος }} </h1>
 
     <h2>Συντελεστές</h2>
     @empty($syntelestes)
-        Δεν υπάρχουν Συντελεστές
+        <p>Δεν υπάρχουν Συντελεστές</p>
     @else
-        <table class="table table-striped">
+    <div class = "table-responsive"> 
+        <table class="table table-hover">
             <thead>
-                <td>Όνοματεπώνυμο</td>
-                <td>Ιδιότητα</td>
+                <th>Όνοματεπώνυμο</td>
+                <th>Ιδιότητα</td>
             </thead>
             <tbody>
                 @foreach($sintelestes as $s)
@@ -26,32 +27,35 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
     @endempty
 
     <h2>Παραστάσεις</h2>
+    <span><i class="fas fa-plus"></i></span>
     @empty($parastaseis)
-        Δεν υπάρχουν Παραστάσεις
+        <p>Δεν υπάρχουν Παραστάσεις</p>
     @else
-        <!-- fix table responsiveness -->
-        <table class="table table-striped">
-            <thead>
-                <td>Θέατρο</td>
-                <td>Αίθουσα</td>
-                <td>Σεζόν</td>
-                <td>Έναρξη</td>
-            </thead>
-            <tbody>
-            @foreach($parastaseis as $p)
-                <tr>
-                    <td><a href="{{ route('Theatro.show', $p->Θ_ID) }}">{{ $p->Όνομα }}</a></td>
-                    <td>{{ $p->Όνομα_Αίθουσας }}</td>
-                    <td>{{ $p->Σεζόν }}</td>
-                    <td>{{ $p->Έναρξη }}</td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-    @endempty
+        <div class = "table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <th scope = "col">Θέατρο</th>
+                    <th scope = "col">Αίθουσα</th>
+                    <th scope = "col">Σεζόν</th>
+                    <th scope = "col">Έναρξη</th>
+                </thead>
+                <tbody>
+                @foreach($parastaseis as $p)
+                    <tr>
+                        <td><a href="{{ route('Theatro.show', $p->Θ_ID) }}">{{ $p->Όνομα }}</a></td>
+                        <td>{{ $p->Όνομα_Αίθουσας }}</td>
+                        <td>{{ $p->Σεζόν }}</td>
+                        <td>{{ $p->Έναρξη }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    @endempty  
 
     @if($own)
         <br/>

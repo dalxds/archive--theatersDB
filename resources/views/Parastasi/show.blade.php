@@ -1,48 +1,72 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Παράσταση - {{ $paragwgi->Τίτλος }}</h1>
-    <div>Μειωμένα Εισιτήρια: {{ $reduced_tickets }}</div>
-    <div>Κανονικά Εισιτήρια: {{ $normal_tickets }}</div>
 
-    <br/>
+<section class="has-divider bg-primary-2 text-light">
+        <div class="container">
+            <div class="row">
+            <div class="col">
+                <h2>Divider Style 1</h2>
+            </div>
+            </div>
+        </div>
+        <div class="divider">
+            <svg width="100%" height="96px" viewBox="0 0 100 100" version="1.1" preserveAspectRatio="none" class="injected-svg bg-white">
+                <path d="M0,0 C40,33 66,52 75,52 C83,52 92,33 100,0 L100,100 L0,100 L0,0 Z"></path>
+            </svg>
+        </div>
+</section>
+
+<div class = "container">
+
+    <h1>{{ $paragwgi->Τίτλος }}</h1>
+    <h2>{{date('d-m-Y h:m' , strtotime($parastasi->Έναρξη))}}</h2>
+
+    <div class = "buy-tickets">
+        <form class ="buy-tickets-form" method="POST" action="{{ route('Eisitirio.checkin', $parastasi->Π_ID) }}">
+            <input type = "hidden" name = "type" value = "ΚΑΝΟΝΙΚΟ">
+            <button type = "submit" class = "btn btn-primary mb-4">
+                Κανονικό Εισιτήριο
+                <span class = "badge badge-light">{{ $normal_tickets }}</span>
+            </button>
+        </form>
+
+        <form class ="buy-tickets-form" method = "POST" action = "{{ route('Eisitirio.checkin', $parastasi->Π_ID) }}">
+            <input type = "hidden" name = "type" value = "ΜΕΙΩΜΕΝΟ">
+            <button type = "submit" class = "btn btn-primary mb-4">
+                Μειωμένο Εισιτήριο
+                <span class = "badge badge-light">{{ $reduced_tickets }}</span>
+            </button>
+        </form>
+    </div>
+
     @guest
-        Κάντε log in για να κλείσετε εισιτήρια
+        <p>Κάντε log in για να αγοράσετε εισιτήρια</p>
     @else
-        @if($reduced_tickets > 0)
-            <form method="POST" action="{{ route('Eisitirio.checkin', $parastasi->Π_ID) }}">
-                <input type="hidden" name="type" value="ΜΕΙΩΜΕΝΟ">
-                <input type="submit" class="btn btn-secondary" value="Κατοχύρωση Μειωμένου Εισιτηρίου"></input>
-            </form>
-        @endif
-
-        @if($normal_tickets > 0)
-            <form method="POST" action="{{ route('Eisitirio.checkin', $parastasi->Π_ID) }}">
-                <input type="hidden" name="type" value="ΚΑΝΟΝΙΚΟ">
-                <input type="submit" class="btn btn-secondary" value="Κατοχύρωση Κανονικού Εισιτηρίου"></input>
-            </form>
-        @endif
 
         @if($user_tickets)
-            <h2>Τα Εισιτήρια Σου</h2>
-            <table class="striped table">
-                <thead>
-                    <td>Θέση</td>
-                    <td>Σειρά</td>
-                    <td>Τύπος Εισιτηρίου</td>
-                    <td>Τιμή</td>
-                </thead>
-                <tbody>
-                    @foreach ($user_tickets as $t)
-                        <tr>
-                            <td>{{ $t->Θέση }}</td>
-                            <td>{{ $t->Σειρά }}</td>
-                            <td>{{ $t->{'Τύπος Εισιτηρίου'} }}</td>
-                            <td>{{ $t->Τιμή }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <h2>Αγορασμένα Εισιτήρια</h2>
+            <div class = "table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th>Θέση</th>
+                        <th>Σειρά</th>
+                        <th>Τύπος Εισιτηρίου</th>
+                        <th>Τιμή</th>
+                    </thead>
+                    <tbody>
+                        @foreach ($user_tickets as $t)
+                            <tr>
+                                <td>{{ $t->Θέση }}</td>
+                                <td>{{ $t->Σειρά }}</td>
+                                <td>{{ $t->{'Τύπος Εισιτηρίου'} }}</td>
+                                <td>{{ $t->Τιμή }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+</div>
         @endif
     @endguest
 @endsection

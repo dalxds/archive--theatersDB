@@ -10,6 +10,20 @@
 // Custom Templating
 @import "custom";
 
-// Font-Awesome
-@import "node_modules/font-awesome/scss/font-awesome.scss";
-// @import "node_modules/font-awesome/scss/solid.scss";
+// Buttons
+@import "buttons";
+
+// Dividers
+@import "dividers";
+
+// Font Awesome
+@font-face {
+    font-family: FontAwesome;
+    src: url("fonts/vendor/font-awesome/fontawesome-webfont.woff2");
+}
+
+// Custom Fonts
+@font-face {
+    font-family: Inter-UI;
+    src: url("fonts/Inter-UI.var.woff2");
+}

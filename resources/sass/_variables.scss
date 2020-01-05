@@ -1,8 +1,18 @@
 // Body
 $body-bg: #f8fafc;
+$spacer: 1.5rem;
+$white: #fff;
+
+$transition-time: 0.2s;
+$transition-time-fast: 0.1s;
+$transition-time-slow: 0.4s;
+
+// Sections
+
+$default-section-padding: $spacer * 4;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: "Nunito", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
@@ -17,3 +27,8 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+// Palette
+$primary: #3755be;
+$primary-2: #ff8e88;
+$primary-3: #1b1f3b;
