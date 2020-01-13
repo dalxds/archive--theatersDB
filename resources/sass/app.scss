@@ -1,6 +1,8 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Nunito");
 
+@import "~font-awesome/scss/font-awesome.scss";
+
 // Variables
 @import "variables";
 
@@ -15,12 +17,6 @@
 
 // Dividers
 @import "dividers";
-
-// Font Awesome
-@font-face {
-    font-family: FontAwesome;
-    src: url("fonts/vendor/font-awesome/fontawesome-webfont.woff2");
-}
 
 // Custom Fonts
 @font-face {

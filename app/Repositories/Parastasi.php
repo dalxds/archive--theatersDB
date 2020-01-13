@@ -62,4 +62,23 @@ class Parastasi {
 
         return $ret;
     }
+
+    public static function getAllUpcoming()
+    {
+        $ret = \DB::select('
+            SELECT DISTINCT `Τίτλος_Παραγωγής`, `Θέατρο`, `parastasi`.`ΘΠ_ID`, `parastasi`.`Θ_ID`
+            
+            FROM parastasi
+            
+            JOIN (SELECT `Τίτλος` AS `Τίτλος_Παραγωγής`, `ΘΠ_ID` FROM theatriki_paragwgi) AS T1
+            ON T1.ΘΠ_ID = parastasi.ΘΠ_ID
+            
+            JOIN (SELECT `Όνομα` AS `Θέατρο`, `Θ_ID` FROM theatro) AS T2
+            ON T2.Θ_ID = parastasi.Θ_ID
+            
+            WHERE UTC_TIMESTAMP() < `Έναρξη`
+        ');
+
+        return $ret;
+    }
 }

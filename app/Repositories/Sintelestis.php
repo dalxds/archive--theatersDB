@@ -20,6 +20,26 @@ class Sintelestis {
             'SELECT * FROM sintelestis
             WHERE Σ_ID = :id', compact('id'));
 
+        return count($ret) ? $ret[0] : null;
+    }
+
+    public static function getAll() {
+        $ret = \DB::select('SELECT * FROM sintelestis');
+
         return $ret;
+    }
+
+    public static function delete($paragwgi_id, $sintelestis_id, $idiotita)
+    {
+        \DB::delete('
+            DELETE FROM `sintelestis_me_idiotita_se_paragwgi`
+            WHERE
+                ΘΠ_ID = :paragwgi_id
+            AND
+                Σ_ID = :sintelestis_id
+            AND
+                Ιδιότητα = :idiotita
+            LIMIT 1;
+        ', compact('paragwgi_id', 'sintelestis_id', 'idiotita'));
     }
 }

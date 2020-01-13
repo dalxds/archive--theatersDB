@@ -40,3 +40,7 @@ section.has-divider {
         padding-bottom: $default-section-padding;
     }
 }
+
+.injected-svg.bg-white {
+    fill: white;
+}

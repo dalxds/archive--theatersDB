@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Axiologisi;
 use App\Repositories\TheatrikiParagwgi as TheatrikiParagwgiRepository;
-use App\Repositories\Sintelestis as SyntelestisRepository;
+use App\Repositories\Sintelestis as SintelestisRepository;
 use App\Repositories\Parastasi as ParastasiRepository;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -52,20 +53,24 @@ class TheatrikiParagwgi extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show($id, Request $request)
     {
         $paragwgi = TheatrikiParagwgiRepository::getById($id);
 
         if (is_null($paragwgi))
             throw new NotFoundHttpException();
 
-        $sintelestes = SyntelestisRepository::getByParagwgiId($paragwgi->ΘΠ_ID);
+        $sintelestes = SintelestisRepository::getByParagwgiId($paragwgi->ΘΠ_ID);
         $parastaseis = ParastasiRepository::getByTheatrikiParagwgiId($paragwgi->ΘΠ_ID);
+        $axiologiseis = Axiologisi::getByTheatrikiParagwgiId($paragwgi->ΘΠ_ID);
 
         $own = TheatrikiParagwgiRepository::isOwnedByUser($id);
 
+        $own_axiologisi = false;
+        if ($request->user())
+            $own_axiologisi = collect($axiologiseis)->firstWhere('ΘΕ_ID', $request->user()->spectator_id);
 
-        return view('TheatrikiParagwgi.show')->with(compact('paragwgi', 'sintelestes', 'parastaseis', 'own'));
+        return view('TheatrikiParagwgi.show')->with(compact('paragwgi', 'sintelestes', 'parastaseis', 'own', 'axiologiseis', 'own_axiologisi'));
     }
 
     public function index_own()
@@ -78,8 +83,54 @@ class TheatrikiParagwgi extends Controller
             $paragwges = TheatrikiParagwgiRepository::getByEtairiaParagwgisId($afm);
 
             return view('EtairiaParagwgis.show')->with(
-                compact('paragwges', 'etairia')
+                compact('paragwges', 'etairia', 'sintelestes')
             );
         }
+    }
+
+    public function addSintelestisForm($id, Request $request) {
+        if ($this->isOwnParagwgi($id, $request)) {
+            $afm = \Auth::user()->ep_afm;
+
+            $paragwgi = TheatrikiParagwgiRepository::getById($id);
+            $all_sintelestes = SintelestisRepository::getAll();
+
+            return view('TheatrikiParagwgi.addSintelestis', compact('paragwgi', 'all_sintelestes'));
+        }
+    }
+
+    public function addSintelestis($id, Request $request) {
+        if ($this->isOwnParagwgi($id, $request)) {
+            $afm = \Auth::user()->ep_afm;
+
+            $data = $request->only('sintelestis_id', 'idiotita');
+            $data['paragwgi_id'] = $id;
+
+            TheatrikiParagwgiRepository::addSintelestis($data);
+
+            return redirect(route('TheatrikiParagwgi.show', compact('id')));
+        }
+    }
+
+    public function removeSintelestis($id, $sintelestis_id, Request $request)
+    {
+        if ($paragwgi = $this->isOwnParagwgi($id, $request)) {
+            $paragwgi_id = $id;
+            $idiotita = $request->get('idiotita');
+            SintelestisRepository::delete($paragwgi_id, $sintelestis_id, $idiotita);
+
+            return redirect(route('TheatrikiParagwgi.show', $paragwgi_id));
+        }
+    }
+
+    public function isOwnParagwgi($id, Request $request) {
+        if ($request->user() && $request->user()->type == 1 && !is_null($request->user()->ep_afm)) {
+            $paragwgi = TheatrikiParagwgiRepository::getById($id);
+
+            if ($paragwgi->Εταιρεία_Παραγωγής == $request->user()->ep_afm)
+                return $paragwgi;
+        }
+
+        return false;
     }
 }

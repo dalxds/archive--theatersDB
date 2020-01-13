@@ -13,7 +13,7 @@ class DbDump extends Migration
      */
     public function up()
     {
-        \DB::unprepared( file_get_contents( "../theatersdb_dump.sql" ) );
+        \DB::unprepared( file_get_contents( base_path('database/theatersdb_dump.sql') ) );
     }
 
     /**

@@ -40,4 +40,24 @@ class User extends Authenticatable
     protected $attributes = [
         'spectator_id' => null
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::created(function ($model) {
+            if ($model->spectator_id)
+                return;
+
+            $theatisid = \App\Repositories\Theatis::create();
+            \App\Repositories\Theatis::update($theatisid, [
+                'email' => $model->email,
+                'onoma' => 'Ανώνυμος',
+                'epwnymo' => 'Χρήστης'
+            ]);
+
+            $model->spectator_id = $theatisid;
+            $model->save();
+        });
+    }
 }

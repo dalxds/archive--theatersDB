@@ -15,7 +15,7 @@ class Sintelestis extends Controller
         if (is_null($sintelestis))
             throw new NotFoundHttpException();
 
-        $paragwges = TheatrikiParagwgiRepository::getBySyntelestisId($id);
+        $paragwges = TheatrikiParagwgiRepository::getBySintelestisId($id);
 
         return view('Sintelestis.show', compact('sintelestis', 'paragwges'));
     }

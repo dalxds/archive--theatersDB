@@ -23,14 +23,14 @@ class TheatrikiParagwgi {
         return count($ret) ? $ret[0] : null;
     }
 
-    public static function getBySyntelestisId($id) {
+    public static function getBySintelestisId($id) {
         $ret = \DB::select('SELECT Τίτλος, Ιδιότητα, T1.ΘΠ_ID
             FROM sintelestis_me_idiotita_se_paragwgi
             JOIN (SELECT ΘΠ_ID, Τίτλος FROM theatriki_paragwgi) AS T1
             ON sintelestis_me_idiotita_se_paragwgi.ΘΠ_ID = T1.ΘΠ_ID
             WHERE sintelestis_me_idiotita_se_paragwgi.Σ_ID = :id', compact('id'));
 
-        return count($ret) ? $ret[0] : null;
+        return $ret;
     }
 
     public static function getByEtairiaParagwgisId($id)
@@ -58,5 +58,15 @@ class TheatrikiParagwgi {
         }
 
         return false;
+    }
+
+    //$data: 'paragwgi_id', 'sintelestis_id', 'idiotita'
+    public static function addSintelestis($data) {
+        \DB::insert(
+            'INSERT INTO `sintelestis_me_idiotita_se_paragwgi`
+            (ΘΠ_ID, Σ_ID, Ιδιότητα)
+            VALUES( :paragwgi_id, :sintelestis_id, :idiotita)',
+            $data
+        );
     }
 }

@@ -13,13 +13,9 @@
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 // Resource TheatrikiParagwgi
 
@@ -63,3 +59,18 @@ Route::get('/Theatis/{id}', 'Theatis@show')
 
 Route::post('/Theatis/{id}/update', 'Theatis@update')
     ->name('Theatis.update');
+
+Route::get('TheatrikiParagwgi/{id}/Axiologisi/new', 'Axiologisi@create')
+    ->name('Axiologisi.create');
+
+Route::post('TheatrikiParagwgi/{id}/Axiologisi/new', 'Axiologisi@store')
+    ->name('Axiologisi.store');
+
+Route::get('TheatrikiParagwgi/{id}/Sintelestes/new', 'Api\TheatrikiParagwgi@addSintelestisForm')
+    ->name('TheatrikiParagwgi.addSintelestisForm');
+
+Route::post('TheatrikiParagwgi/{id}/Sintelestes/new', 'Api\TheatrikiParagwgi@addSintelestis')
+    ->name('TheatrikiParagwgi.addSintelestis');
+
+Route::post('TheatrikiParagwgi/{id}/Sintelestes/{sintelestis_id}/remove', 'Api\TheatrikiParagwgi@removeSintelestis')
+    ->name('TheatrikiParagwgi.removeSintelestis');

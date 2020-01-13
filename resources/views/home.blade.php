@@ -1,23 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+    <h1>Προσεχώς Παραστάσεις</h1>
+    <div class = "table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <th>Τίτλος</th>
+                <th>Θέατρο</th>
+            </thead>
+            <tbody>
+            @foreach($prosexws as $p)
+                <tr>
+                    <td><a href="{{ route('TheatrikiParagwgi.show', $p->ΘΠ_ID) }}">{{ $p->Τίτλος_Παραγωγής }}</a></td>
+                    <td><a href="{{ route('Theatro.show', $p->Θ_ID) }}">{{ $p->Θέατρο }}</a></td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
-</div>
 @endsection

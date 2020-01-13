@@ -28,4 +28,7 @@
 
     <h2>Παλιά Εισιτήρια</h2>
     @include('partials.TicketTable', ['tickets' => $past_tickets])
+
+    <h2>Αξιολογήσεις Παραστάσεων</h2>
+    @include('Theatis.axiologiseis', compact('axiologiseis'))
 @endsection

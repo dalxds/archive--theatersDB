@@ -10,7 +10,7 @@
     </div>
 
     <h2>Παραστάσεις</h2>
-    @empty($paragwges)
+    @empty($parastaseis)
         <p>Δεν υπάρχουν Παραστάσεις</p>
     @else
     <!-- TODO Link για εισιτήριο -->
@@ -21,6 +21,9 @@
                 <th>Αίθουσα</th>
                 <th>Σεζόν</th>
                 <th>Έναρξη</th>
+                @auth
+                    <th>Εισητήρια</th>
+                @endauth
             </thead>
             <tbody>
             @foreach($parastaseis as $p)
@@ -29,6 +32,9 @@
                     <td>{{ $p->Όνομα_Αίθουσας }}</td>
                     <td>{{ $p->Σεζόν }}</td>
                     <td>{{ $p->Έναρξη }}</td>
+                    @auth
+                        <td><a href="{{ route('Parastasi.show', $p->Π_ID) }}">Εισητήρια</a></td>
+                    @endauth
                 </tr>
             @endforeach
             </tbody>

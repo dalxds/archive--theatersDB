@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
         // Simple User 1
         User::create([
             'email' => 'simpleuser1@tdb.com',
-            'name' => 'SimpleUser 1',
             'password' => Hash::make('password'),
             'type' => 0
         ]);
@@ -28,7 +27,6 @@ class DatabaseSeeder extends Seeder
         // Simple User 2
         User::create([
             'email' => 'simpleuser2@tdb.com',
-            'name' => 'Simple User 2',
             'password' => Hash::make('password'),
             'type' => 0
         ]);
@@ -36,7 +34,6 @@ class DatabaseSeeder extends Seeder
         // Production User
         User::create([
             'email' => 'production@tdb.com',
-            'name' => 'Production User',
             'password' => Hash::make('password'),
             'ep_afm' => '997177664',
             'type' => 1
