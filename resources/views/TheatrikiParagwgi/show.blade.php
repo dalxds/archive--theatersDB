@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class = "container">
+<div class = "container py-4">
     <h1> {{ $paragwgi->Τίτλος }} </h1>
 
     <h2>Συντελεστές</h2>

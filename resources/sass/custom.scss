@@ -161,3 +161,13 @@ body {
 .nav-tabs .nav-link:focus {
     border: none;
 }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.py-4 {
+    padding-top: 0 !important;
+}
