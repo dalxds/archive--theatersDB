@@ -25,7 +25,7 @@
     <div class = "buy-tickets">
         <form class ="buy-tickets-form" method="POST" action="{{ route('Eisitirio.checkin', $parastasi->Π_ID) }}">
             <input type = "hidden" name = "type" value = "ΚΑΝΟΝΙΚΟ">
-            <button type = "submit" class = "btn btn-primary mb-4">
+            <button type = "submit" class = "btn btn-primary mb-4" @guest disabled @endguest>
                 Κανονικό Εισιτήριο
                 <span class = "badge badge-light">{{ $normal_tickets }}</span>
             </button>
@@ -33,13 +33,13 @@
 
         <form class ="buy-tickets-form" method = "POST" action = "{{ route('Eisitirio.checkin', $parastasi->Π_ID) }}">
             <input type = "hidden" name = "type" value = "ΜΕΙΩΜΕΝΟ">
-            <button type = "submit" class = "btn btn-primary mb-4">
+            <button type = "submit" class = "btn btn-primary mb-4" @guest disabled @endguest>
                 Μειωμένο Εισιτήριο
                 <span class = "badge badge-light">{{ $reduced_tickets }}</span>
             </button>
         </form>
     </div>
-
+    
     @guest
         <p>Κάντε log in για να αγοράσετε εισιτήρια</p>
     @else
