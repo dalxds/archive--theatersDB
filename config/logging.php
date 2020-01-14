@@ -42,20 +42,20 @@ return [
         ],
 
         'single' => [
-            'driver' => 'single',
+            'driver' => 'errorlog',
             'path' => storage_path('logs/laravel.log'),
             'level' => 'debug',
         ],
 
         'daily' => [
-            'driver' => 'daily',
+            'driver' => 'errorlog',
             'path' => storage_path('logs/laravel.log'),
             'level' => 'debug',
             'days' => 14,
         ],
 
         'slack' => [
-            'driver' => 'slack',
+            'driver' => 'errorlog',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
             'username' => 'Laravel Log',
             'emoji' => ':boom:',
@@ -63,7 +63,7 @@ return [
         ],
 
         'papertrail' => [
-            'driver' => 'monolog',
+            'driver' => 'errorlog',
             'level' => 'debug',
             'handler' => SyslogUdpHandler::class,
             'handler_with' => [
@@ -73,7 +73,7 @@ return [
         ],
 
         'stderr' => [
-            'driver' => 'monolog',
+            'driver' => 'errorlog',
             'handler' => StreamHandler::class,
             'formatter' => env('LOG_STDERR_FORMATTER'),
             'with' => [
