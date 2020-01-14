@@ -6,7 +6,8 @@
         <div class="container">
             <div class="row">
             <div class="col">
-                <h2>Divider Style 1</h2>
+                <h1>{{ $paragwgi->Τίτλος }}</h1>
+                <h2>{{date('d-m-Y h:m' , strtotime($parastasi->Έναρξη))}}</h2>
             </div>
             </div>
         </div>
@@ -18,10 +19,6 @@
 </section>
 
 <div class = "container">
-
-    <h1>{{ $paragwgi->Τίτλος }}</h1>
-    <h2>{{date('d-m-Y h:m' , strtotime($parastasi->Έναρξη))}}</h2>
-
     <div class = "buy-tickets">
         <form class ="buy-tickets-form" method="POST" action="{{ route('Eisitirio.checkin', $parastasi->Π_ID) }}">
             <input type = "hidden" name = "type" value = "ΚΑΝΟΝΙΚΟ">

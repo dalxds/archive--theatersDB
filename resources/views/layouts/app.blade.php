@@ -52,6 +52,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('TheatrikiParagwgi.index_own') }}">Διαχείριση Εταιρείας Παραγωγής</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('TheatrikiParagwgi.index_own') }}">Θέατρα</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->email }} <span class="caret"></span>
@@ -77,7 +80,7 @@
             </div>
         </nav>
 
-        <main class="py-4" style="padding: 0 30px;">
+        <main>
             @yield('content')
         </main>
     </div>
