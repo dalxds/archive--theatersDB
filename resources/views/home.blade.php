@@ -1,21 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Προσεχώς Παραστάσεις</h1>
-    <div class = "table-responsive">
-        <table class="table table-hover">
-            <thead>
-                <th>Τίτλος</th>
-                <th>Θέατρο</th>
-            </thead>
-            <tbody>
-            @foreach($prosexws as $p)
-                <tr>
-                    <td><a href="{{ route('TheatrikiParagwgi.show', $p->ΘΠ_ID) }}">{{ $p->Τίτλος_Παραγωγής }}</a></td>
-                    <td><a href="{{ route('Theatro.show', $p->Θ_ID) }}">{{ $p->Θέατρο }}</a></td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+<div class="container">
+
+    <h1>Παίζονται / Προσεχώς</h1>
+
+    <div class = "row">
+        @foreach($prosexws as $p)
+        <div class = "col-sm-4">
+            <a href = "{{ route('TheatrikiParagwgi.show', $p->ΘΠ_ID) }}" class = "card card-body card_style justify-content-between bg-primary text-light">
+                <h3> {{ $p->Τίτλος_Παραγωγής }} </h3>
+                <span class = "text-small opacity-70">{{ $p->Θέατρο }}</span>
+            </a>
+        </div>
+        @endforeach
     </div>
+</div>
 @endsection

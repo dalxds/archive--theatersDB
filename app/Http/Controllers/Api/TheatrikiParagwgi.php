@@ -83,7 +83,7 @@ class TheatrikiParagwgi extends Controller
             $paragwges = TheatrikiParagwgiRepository::getByEtairiaParagwgisId($afm);
 
             return view('EtairiaParagwgis.show')->with(
-                compact('paragwges', 'etairia', 'sintelestes')
+                compact('paragwges', 'etairia')
             );
         }
     }

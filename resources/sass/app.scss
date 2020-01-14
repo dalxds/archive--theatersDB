@@ -3,6 +3,11 @@
 
 @import "~font-awesome/scss/font-awesome.scss";
 
+@font-face {
+    font-family: Inter-UI;
+    src: url("fonts/Inter-UI.var.woff2");
+}
+
 // Variables
 @import "variables";
 
@@ -18,8 +23,29 @@
 // Dividers
 @import "dividers";
 
-// Custom Fonts
-@font-face {
-    font-family: Inter-UI;
-    src: url("fonts/Inter-UI.var.woff2");
-}
+// Spacing
+@import "spacing";
+
+// Text Emphasis
+@import "text-emphasis";
+
+// Flex
+@import "flex";
+
+// Display
+@import "display";
+
+// Utilities
+@import "utilities";
+
+// SVG
+@import "svg";
+
+// Navigation
+@import "navs";
+
+// Icons
+@import "icons";
+
+// Typography
+@import "typography";

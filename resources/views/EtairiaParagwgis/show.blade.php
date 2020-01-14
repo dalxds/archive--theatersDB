@@ -11,11 +11,11 @@
     @else
         <div class = "row">
             @foreach($paragwges as $p)
-                <div class = "col-sm-4">
-                    <a href ="{{ route('TheatrikiParagwgi.show', ['id' => $p->ΘΠ_ID]) }}" class = "card card-body card_style justify-content-between bg-primary text-light">
-                        <h3> {{ $p->Τίτλος }} </h3>
-                    </a>
-                </div>
+            <div class = "col-sm-4">
+                <a href ="{{ route('TheatrikiParagwgi.show', ['id' => $p->ΘΠ_ID]) }}" class = "card card-body card_style justify-content-between bg-primary text-light">
+                    <h3> {{ $p->Τίτλος }} </h3>
+                </a>
+            </div>
             @endforeach
             <!-- TODO change color for + -->
             <div class = "col-sm-4">

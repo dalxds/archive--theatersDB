@@ -1,5 +1,5 @@
 @empty($axiologiseis)
-    Δεν υπάρχουν αξιολογήσεις
+    <p>Δεν υπάρχουν αξιολογήσεις</p>
 @else
     Συνολικές Αξιολογήσεις: {{ count($axiologiseis) }}
     <div class = "table-responsive">

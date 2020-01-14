@@ -32,3 +32,30 @@ $cyan: #6cb2eb;
 $primary: #3755be;
 $primary-2: #ff8e88;
 $primary-3: #1b1f3b;
+
+// Color Scheme
+//
+
+$theme-color-scheme: ();
+$theme-color-scheme: map-merge(
+    (
+        "primary": $primary,
+        "primary-2": $primary-2,
+        "primary-3": $primary-3
+    ),
+    $theme-color-scheme
+);
+
+// Shadows
+$shadow-3d: 0.5rem 0.5rem 0 rgba(#e1e4e8, 0.5);
+
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+$transition-time: 0.2s;
+$transition-time-fast: 0.1s;
+$transition-time-slow: 0.4s;
+
+// Sections
+
+$default-section-padding: $spacer * 4;
