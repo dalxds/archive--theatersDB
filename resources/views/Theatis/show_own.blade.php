@@ -1,35 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
-<div class = "container py-4">
-    <h1>{{ $theatis->Όνομα }} {{ $theatis->Επώνυμο }}</h1>
+<section class="has-divider bg-primary-2 text-light">
+    <div class="container">
+        <div class="row">
+        <div class="col">
+            <h1>{{ $theatis->Όνομα }} {{ $theatis->Επώνυμο }}</h1>
+        </div>
+        </div>
+    </div>
+    <div class="divider">
+        <svg width="100%" height="96px" viewBox="0 0 100 100" version="1.1" preserveAspectRatio="none" class="injected-svg bg-white">
+            <path d="M0,0 C40,33 66,52 75,52 C83,52 92,33 100,0 L100,100 L0,100 L0,0 Z"></path>
+        </svg>
+    </div>
+</section>
 
-    <section>
-        <form action = "{{ route('Theatis.update', $theatis->ΘΕ_ID) }}" method = "POST">
-            <div class = "form-row">
-                <div class = "form-group col-sm">
-                    <label for = "onoma">Όνομα</label>
-                    <input type = "text" class = "form-control form-control-lg" name = "onoma" value = "{{ $theatis->Όνομα ?? '' }}" placeholder = "Πληκτρολογήστε το όνομά σας">
-                </div>
-                <div class = "form-group col-sm">
-                    <label for = "epwnymo">Επώνυμο</label>
-                    <input type = "text" class = "form-control form-control-lg" name = "epwnymo" value = "{{ $theatis->Επώνυμο ?? '' }}" placeholder = "Πληκτρολογήστε το επώνυμό σας">
-                </div>
+<div class = "container py-4">
+    <h2>Στοιχεία Χρήστη</h2>
+    <form action = "{{ route('Theatis.update', $theatis->ΘΕ_ID) }}" method = "POST">
+        <div class = "form-row">
+            <div class = "form-group col-sm">
+                <label for = "onoma">Όνομα</label>
+                <input type = "text" class = "form-control form-control-lg" name = "onoma" value = "{{ $theatis->Όνομα ?? '' }}" placeholder = "Πληκτρολογήστε το όνομά σας">
             </div>
-            <div class = "form-row">
-                <div class="form-group col-sm">
-                    <label for = "email">Email</label>
-                    <input type = "email" class = "form-control form-control-lg" name = "email" value = "{{ $theatis->Email ?? '' }}" placeholder = "Πληκτρολογήστε το email σας">
-                </div>
-                <div class = "form-group col-sm">
-                    <label for = "tilefwno">Τηλέφωνο</label>
-                    <input type = "text" class = "form-control form-control-lg" name = "tilefwno" value = "{{ $theatis->Τηλέφωνο ?? '' }}" placeholder = "Πληκτρολογήστε το τηλέφωνό σας">
-                </div>
+            <div class = "form-group col-sm">
+                <label for = "epwnymo">Επώνυμο</label>
+                <input type = "text" class = "form-control form-control-lg" name = "epwnymo" value = "{{ $theatis->Επώνυμο ?? '' }}" placeholder = "Πληκτρολογήστε το επώνυμό σας">
             </div>
-            <button type="submit" class="submit_btn btn-lg btn-primary-2">Ενημέρωση Στοιχείων</button>
-            <!-- <button type="submit" class="m-1 btn btn-primary-2" value="Ενημέρωση"></button> -->
-        </form>
-    </section>
+        </div>
+        <div class = "form-row">
+            <div class="form-group col-sm">
+                <label for = "email">Email</label>
+                <input type = "email" class = "form-control form-control-lg" name = "email" value = "{{ $theatis->Email ?? '' }}" placeholder = "Πληκτρολογήστε το email σας">
+            </div>
+            <div class = "form-group col-sm">
+                <label for = "tilefwno">Τηλέφωνο</label>
+                <input type = "text" class = "form-control form-control-lg" name = "tilefwno" value = "{{ $theatis->Τηλέφωνο ?? '' }}" placeholder = "Πληκτρολογήστε το τηλέφωνό σας">
+            </div>
+        </div>
+        <button type="submit" class="submit_btn btn-lg btn-primary-2">Ενημέρωση Στοιχείων</button>
+        <!-- <button type="submit" class="m-1 btn btn-primary-2" value="Ενημέρωση"></button> -->
+    </form>
 
     <section>
         <ul class ="nav nav-tabs justify-content-center border-bottom pb-2" role="tablist">

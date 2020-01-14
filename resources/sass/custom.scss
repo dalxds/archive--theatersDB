@@ -16,12 +16,12 @@ body {
 }
 
 .submit_btn {
-    background-color: #ff8e88;
-    border-color: #ff8e88;
-    color: #fff;
-    text-align: center;
-    width: 100%;
-    font-weight: 600;
+    background-color: #ff8e88 !important;
+    border-color: #f5d0ce !important;
+    color: #fff !important;
+    text-align: center !important;
+    width: 100% !important;
+    font-weight: 600 !important;
 }
 
 .submit_btn:hover,
@@ -31,10 +31,10 @@ body {
 .show > .submit_btn.dropdown-toggle,
 .submit_btn:focus,
 .submit_btn.focus {
-    background-color: #ff6a62;
-    border-color: #ff5e55;
-    color: #fff;
-    text-decoration: none;
+    background-color: #ff6a62 !important;
+    border-color: #ff5e55 !important;
+    color: #fff !important;
+    text-decoration: none !important;
 }
 
 // BADGE
@@ -171,4 +171,8 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .py-4 {
     padding-top: 0 !important;
+}
+
+tr.own-rating {
+    background-color: #ff8e88;
 }

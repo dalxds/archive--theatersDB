@@ -1,29 +1,51 @@
 <template>
-  <b-container>
-    <b-form @submit.stop.prevent="submit">
-      <b-form-group label-for="theatroSelect">
-        Θέατρο
-        <b-form-select v-model="theatroSelect" :options="theatraOptions" size="lg"></b-form-select>
-      </b-form-group>
-      <b-form-group label-for="sezon">
-        Σεζόν
-        <b-form-select v-model="sezon" :options="sezonOptions" size="lg"></b-form-select>
-      </b-form-group>
-      <b-form-group label-for="enarxi">
-        Ημερομηνία Έναρξης
-        <b-form-input type="datetime-local" v-model="enarxi" size="lg"></b-form-input>
-      </b-form-group>
+  <div>
+    <section class="has-divider bg-primary-2 text-light">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h1>Προσθήκη Παράστασης</h1>
+          </div>
+        </div>
+      </div>
+      <div class="divider">
+        <svg
+          width="100%"
+          height="96px"
+          viewBox="0 0 100 100"
+          version="1.1"
+          preserveAspectRatio="none"
+          class="injected-svg bg-white"
+        >
+          <path d="M0,0 C40,33 66,52 75,52 C83,52 92,33 100,0 L100,100 L0,100 L0,0 Z" />
+        </svg>
+      </div>
+    </section>
+    <b-container>
+      <b-form @submit.stop.prevent="submit">
+        <b-form-group label-for="theatroSelect">
+          Θέατρο
+          <b-form-select v-model="theatroSelect" :options="theatraOptions" size="lg"></b-form-select>
+        </b-form-group>
+        <b-form-group label-for="sezon">
+          Σεζόν
+          <b-form-select v-model="sezon" :options="sezonOptions" size="lg"></b-form-select>
+        </b-form-group>
+        <b-form-group label-for="enarxi">
+          Ημερομηνία Έναρξης
+          <b-form-input type="datetime-local" v-model="enarxi" size="lg"></b-form-input>
+        </b-form-group>
 
-      <b-form-group label-for="timi">
-        Τιμή Ολόκληρου Εισιτηρίου (€)
-        <b-form-input type="number" v-model="timi" size="lg"></b-form-input>
-      </b-form-group>
+        <b-form-group label-for="timi">
+          Τιμή Ολόκληρου Εισιτηρίου (€)
+          <b-form-input type="number" v-model="timi" size="lg"></b-form-input>
+        </b-form-group>
 
-      <b-form-invalid-feedback :state="!errors">ERROR</b-form-invalid-feedback>
-
-      <b-button type="submit" class="submit_btn" size="lg">Καταχώρηση</b-button>
-    </b-form>
-  </b-container>
+        <b-form-invalid-feedback :state="!errors">ERROR</b-form-invalid-feedback>
+        <b-button type="submit" class="submit_btn" variant="primary-2" size="lg">Καταχώρηση</b-button>
+      </b-form>
+    </b-container>
+  </div>
 </template>
 
 <script>

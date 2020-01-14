@@ -1,7 +1,14 @@
+<div class="row align-items-center">
+    <div class="col-sm-6">
+        <h2>Αξιολογήσεις Παραστάσεων</h2>
+    </div>
+    <div class="col-sm-6">
+        <p class="float-left float-sm-right">Συνολικές Αξιολογήσεις: <b>{{ count($axiologiseis) }}</b></p>
+    </div>
+</div>
 @empty($axiologiseis)
     <p>Δεν υπάρχουν αξιολογήσεις</p>
 @else
-    Συνολικές Αξιολογήσεις: {{ count($axiologiseis) }}
     <div class = "table-responsive">
         <table class="table table-hover">
             <thead>
