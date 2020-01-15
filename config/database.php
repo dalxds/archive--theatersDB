@@ -47,7 +47,6 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
             'host' => isset($dbUrl["host"]) ? $dbUrl["host"] : env("DB_HOST"),
             'port' => isset($dbUrl["port"]) ? $dbUrl["port"] : env("DB_PORT"),
             'database' => isset($dbUrl["path"]) ? ltrim($dbUrl["path"], '/') : env("DB_DATABASE"),

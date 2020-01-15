@@ -32,7 +32,7 @@
           <b-form-select v-model="sezon" :options="sezonOptions" size="lg"></b-form-select>
         </b-form-group>
         <b-form-group label-for="enarxi">
-          Ημερομηνία Έναρξης
+          Ημερομηνία & Ώρα Έναρξης
           <b-form-input type="datetime-local" v-model="enarxi" size="lg"></b-form-input>
         </b-form-group>
 

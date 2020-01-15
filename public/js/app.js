@@ -67678,7 +67678,7 @@ var render = function() {
                 "b-form-group",
                 { attrs: { "label-for": "enarxi" } },
                 [
-                  _vm._v("\n        Ημερομηνία Έναρξης\n        "),
+                  _vm._v("\n        Ημερομηνία & Ώρα Έναρξης\n        "),
                   _c("b-form-input", {
                     attrs: { type: "datetime-local", size: "lg" },
                     model: {
