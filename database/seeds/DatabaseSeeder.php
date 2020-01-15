@@ -14,9 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // TODO: add spectator IDs to seeded users
-        // TODO: connect users with spectator IDs
-
         // Simple User 1
         User::create([
             'email' => 'simpleuser1@tdb.com',
